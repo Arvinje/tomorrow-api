@@ -80,7 +80,6 @@ EMPTY BODY
 Status: `200`
 ```json
 {
-  "rank": "142",
   "hotspots": [
     {
       "id": "1231245314",
