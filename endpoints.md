@@ -8,8 +8,7 @@
 {
   "username": "sample_user",
   "character": "Cube",
-  "agent": "Android/4.2 1.0",
-  "app_key": "394a258cb23ce6d968de8de8c269"
+  "agent": "Android/4.2 1.0"
 }
 ```
 
