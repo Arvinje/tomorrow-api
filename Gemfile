@@ -31,5 +31,4 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard-rspec', '~> 4.7', '>= 4.7.3', require: false
   gem 'guard-yard', '~> 2.2'
-  gem 'terminal-notifier-guard', '~> 1.7'
 end
