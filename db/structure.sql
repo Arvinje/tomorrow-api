@@ -119,6 +119,38 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
+-- Name: visits; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE visits (
+    id bigint NOT NULL,
+    user_id bigint,
+    hotspot_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: visits_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE visits_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: visits_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE visits_id_seq OWNED BY visits.id;
+
+
+--
 -- Name: hotspots id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -130,6 +162,13 @@ ALTER TABLE ONLY hotspots ALTER COLUMN id SET DEFAULT nextval('hotspots_id_seq':
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: visits id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY visits ALTER COLUMN id SET DEFAULT nextval('visits_id_seq'::regclass);
 
 
 --
@@ -165,6 +204,44 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: visits visits_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY visits
+    ADD CONSTRAINT visits_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_visits_on_hotspot_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_visits_on_hotspot_id ON visits USING btree (hotspot_id);
+
+
+--
+-- Name: index_visits_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_visits_on_user_id ON visits USING btree (user_id);
+
+
+--
+-- Name: visits fk_rails_038ffce8ba; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY visits
+    ADD CONSTRAINT fk_rails_038ffce8ba FOREIGN KEY (hotspot_id) REFERENCES hotspots(id);
+
+
+--
+-- Name: visits fk_rails_09e5e7c20b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY visits
+    ADD CONSTRAINT fk_rails_09e5e7c20b FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -172,6 +249,7 @@ SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20171014132938'),
-('20171014135829');
+('20171014135829'),
+('20171014142001');
 
 
