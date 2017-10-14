@@ -17,4 +17,13 @@ RSpec.describe User, type: :model do
   describe "ActiveRecords Associations" do
     it { is_expected.to have_many :visits }
   end
+
+  describe "#set_api_key" do
+    let(:user) { build :user, api_key: nil }
+
+    it 'generates a new api_key' do
+      user.set_api_key
+      expect(user.api_key).to be_present
+    end
+  end
 end
