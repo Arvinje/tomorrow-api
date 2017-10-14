@@ -1,4 +1,6 @@
 class Api::UsersController < ApiController
+  skip_before_action :authenticate_with_api_key!, only: [:create]
+
   def create
     new_user_params = {
       username: user_params[:username],
