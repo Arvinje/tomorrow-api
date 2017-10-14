@@ -40,6 +40,41 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
+-- Name: hotspots; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE hotspots (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    latitude character varying NOT NULL,
+    longitude character varying NOT NULL,
+    description text,
+    visits_count integer DEFAULT 0 NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: hotspots_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE hotspots_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: hotspots_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE hotspots_id_seq OWNED BY hotspots.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -84,6 +119,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
+-- Name: hotspots id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY hotspots ALTER COLUMN id SET DEFAULT nextval('hotspots_id_seq'::regclass);
+
+
+--
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -96,6 +138,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: hotspots hotspots_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY hotspots
+    ADD CONSTRAINT hotspots_pkey PRIMARY KEY (id);
 
 
 --
@@ -121,6 +171,7 @@ ALTER TABLE ONLY users
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('20171014132938');
+('20171014132938'),
+('20171014135829');
 
 
