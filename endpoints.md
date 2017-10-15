@@ -3,7 +3,7 @@
 ## Registration
 
 #### Request
-`POST https://tomorrowgame.com/api/users`
+`POST https://tomorrowgame.com/api/v1/users`
 ```json
 {
   "username": "sample_user",
@@ -25,7 +25,7 @@ The `api_key` in response have to be in `Authorization` header in all future req
 ## Visiting a hotspot
 
 #### Request
-`POST https://tomorrowgame.com/api/hotspots/[HOTSPOT_ID]/visit`
+`POST https://tomorrowgame.com/api/v1/hotspots/[HOTSPOT_ID]/visit`
 ```json
 EMPTY BODY
 ```
@@ -45,7 +45,7 @@ EMPTY BODY
 ## Getting the leaderboard
 
 #### Request
-`GET https://tomorrowgame.com/api/leaderboard`
+`GET https://tomorrowgame.com/api/v1/leaderboard`
 ```json
 EMPTY BODY
 ```
@@ -77,7 +77,7 @@ Status: `200`
 ## Getting the hotspots list
 
 #### Request
-`GET https://tomorrowgame.com/api/hotspots`
+`GET https://tomorrowgame.com/api/v1/hotspots`
 ```json
 EMPTY BODY
 ```
@@ -110,7 +110,7 @@ Status: `200`
 ## Getting a single hotspot
 
 #### Request
-`GET https://tomorrowgame.com/api/hotspots/[HOTSPOT_ID]`
+`GET https://tomorrowgame.com/api/v1/hotspots/[HOTSPOT_ID]`
 ```json
 EMPTY BODY
 ```
