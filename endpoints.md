@@ -30,8 +30,14 @@ The `api_key` in response have to be in `Authorization` header in all future req
 EMPTY BODY
 ```
 
-#### Response
+#### Response(if it's a new hotspot)
 Status: `201`
+```json
+EMPTY BODY
+```
+
+#### Response(if it's an already visited hotspot)
+Status: `200`
 ```json
 EMPTY BODY
 ```
