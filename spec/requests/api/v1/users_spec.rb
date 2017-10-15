@@ -5,7 +5,7 @@ RSpec.describe "API::V1::Users", type: :request do
     context "when fields are valid" do
       let(:valid_attributes) { { username: "sample_user", character: "Cube", agent: "Android/4.2 1.0" } }
 
-      before { post '/api/v1/users', params: valid_attributes }
+      before { post api_v1_users_path, params: valid_attributes }
 
       it 'creates a valid user' do
         expect(json_response.length).to eq 1
