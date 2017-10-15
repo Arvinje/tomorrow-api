@@ -18,6 +18,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.6', '>= 3.6.1'
   gem 'factory_girl_rails', '~> 4.8'
   gem 'faker', '~> 1.8', '>= 1.8.4'
+  gem 'pry-rails', '~> 0.3.6'
 end
 
 group :test do
