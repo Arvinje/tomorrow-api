@@ -33,3 +33,5 @@ group :development do
   gem 'guard-rspec', '~> 4.7', '>= 4.7.3', require: false
   gem 'guard-yard', '~> 2.2'
 end
+
+gem 'active_model_serializers', '0.10.5'
