@@ -1,4 +1,4 @@
-class Api::UsersController < ApiController
+class Api::V1::UsersController < Api::V1::ApiController
   skip_before_action :authenticate_with_api_key!, only: [:create]
 
   def create
