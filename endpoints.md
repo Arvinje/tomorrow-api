@@ -100,3 +100,24 @@ Status: `200`
   ]
 }
 ```
+
+## Getting a single hotspot
+
+#### Request
+`GET https://tomorrowgame.com/api/hotspots/[HOTSPOT_ID]`
+```json
+EMPTY BODY
+```
+
+#### Response
+Status: `200`
+```json
+{
+  "id": "1231245314",
+  "name": "UTA Main Building",
+  "latitude": "62.3452",
+  "longitude": "142.5368",
+  "visited": true,
+  "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+}
+```
