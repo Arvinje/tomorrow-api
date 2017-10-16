@@ -27,22 +27,37 @@ RSpec.describe "Api::V1::Hotspots", type: :request do
   end
 
   describe "GET /api/v1/hotspot" do
-    let(:hotspot) { create :hotspot }
+    context 'when the hotspot_id is valid' do
+      let(:hotspot) { create :hotspot }
+      before do
+        get api_v1_hotspot_path(hotspot), headers: { 'AUTHORIZATION' => current_user.api_key }
+      end
 
-    before do
-      get api_v1_hotspot_path(hotspot), headers: { 'AUTHORIZATION' => current_user.api_key }
+      it 'has the required keys' do
+        expect(json_response[:id]).to eq hotspot.id
+        expect(json_response[:name]).to eq hotspot.name
+        expect(json_response[:latitude]).to eq hotspot.latitude
+        expect(json_response[:longitude]).to eq hotspot.longitude
+        expect(json_response[:description]).to eq hotspot.description
+      end
+
+      it 'responds with 200' do
+        expect(response).to have_http_status(200)
+      end
     end
 
-    it 'has the required keys' do
-      expect(json_response[:id]).to eq hotspot.id
-      expect(json_response[:name]).to eq hotspot.name
-      expect(json_response[:latitude]).to eq hotspot.latitude
-      expect(json_response[:longitude]).to eq hotspot.longitude
-      expect(json_response[:description]).to eq hotspot.description
-    end
+    context 'when the hotspot_id is invalid' do
+      before do
+        get api_v1_hotspot_path(id: 23223), headers: { 'AUTHORIZATION' => current_user.api_key }
+      end
 
-    it 'responds with 200' do
-      expect(response).to have_http_status(200)
+      it 'has a message key' do
+        expect(json_response).to have_key :message
+      end
+
+      it 'responds with 404' do
+        expect(response).to have_http_status(404)
+      end
     end
   end
 end

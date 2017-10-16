@@ -36,5 +36,20 @@ RSpec.describe "Api::V1::Visits", type: :request do
         expect(response).to have_http_status(200)
       end
     end
+
+    context 'when user tries to visit a non-existent hotspot' do
+      before do
+        post api_v1_hotspot_visit_path(hotspot_id: 1234124),
+              headers: { 'AUTHORIZATION' => current_user.api_key }
+      end
+
+      it 'has a message key' do
+        expect(json_response).to have_key :message
+      end
+
+      it 'responds with 404' do
+        expect(response).to have_http_status(404)
+      end
+    end
   end
 end
