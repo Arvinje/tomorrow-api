@@ -14,10 +14,4 @@ class Api::V1::UsersController < Api::V1::ApiController
       head :unprocessable_entity
     end
   end
-
-  private
-
-  # def user_params
-  #   @user_params ||= params.permit(:username, :agent)
-  # end
 end
