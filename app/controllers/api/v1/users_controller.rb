@@ -3,9 +3,9 @@ class Api::V1::UsersController < Api::V1::ApiController
 
   def create
     new_user_params = {
-      username: user_params[:username],
-      os_version: user_params[:agent].split(' ').first,
-      app_version: user_params[:agent].split(' ').last
+      username: params[:username],
+      os_version: params[:agent].split(' ').first,
+      app_version: params[:agent].split(' ').last
     }
     user = User.new(new_user_params)
     if user.save
@@ -17,7 +17,7 @@ class Api::V1::UsersController < Api::V1::ApiController
 
   private
 
-  def user_params
-    @user_params ||= params.permit(:username, :agent)
-  end
+  # def user_params
+  #   @user_params ||= params.permit(:username, :agent)
+  # end
 end
