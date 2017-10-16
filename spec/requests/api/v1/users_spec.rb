@@ -16,5 +16,20 @@ RSpec.describe "API::V1::Users", type: :request do
         expect(response).to have_http_status(:created)
       end
     end
+
+    context "when fields are not valid" do
+      let(:invalid_attributes) { { username: "shr", character: "Cube", agent: "Android/4.2 1.0" } }
+
+      before { post api_v1_users_path, params: invalid_attributes }
+
+      it "doesn't create a user" do
+        expect(User.exists?(username: 'shr')).to be false
+      end
+
+      it 'returns status code 422' do
+        expect(response.body).to be_empty
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
   end
 end
